@@ -6,11 +6,15 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Index Page</title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-  <link href="https://cdn.bootcss.com/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
   <script src="https://cdn.bootcss.com/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 </head>
 <body>
 <section class="header-container">
@@ -40,17 +44,31 @@
       <li><a href="#">SIGN IN</a></li>
       <li><a href="#">REGISTER</a></li>
       <li><a href="#">FIND A STORE</a></li>
-      <li class="change-country">
+      <li class="change-country" data-toggle="modal" data-target="#select-country-modal">
         <img src="https://www.chicos.com/store/ibf/images/flags/CHL.jpg" alt="">
         <span class="fas fa-angle-down"></span>
       </li>
     </ul>
   </section>
   <section class="header-nav-container">
+    <!-- 移动端才显示 -->
+    <div class="mobile-header-nav-landing-container">
+      <div class="close-container">
+        <span class="fas fa-times close-header-nav-container"></span>
+      </div>
+      <div class="account-container">
+        <a href="#">SIGN IN</a>
+        <a href="#">REGISTER</a>
+      </div>
+      <div class="change-country" data-toggle="modal" data-target="#select-country-modal">
+        Change Country
+        <img src="https://www.chicos.com/store/ibf/images/flags/CHL.jpg" alt="">
+      </div>
+    </div>
     <ul class="header-nav-item-group">
       <li class="header-nav-item">
         <a href="javascript:void(0)">New Arrivals</a>
-        <section class="header-nav-item-section">
+        <section class="header-nav-item-container" style="visibility: hidden; opacity: 0">
           <section class="row">
             <section class="col-md-3">
               <h3>Collections1</h3>
@@ -106,7 +124,7 @@
       </li>
       <li class="header-nav-item">
         <a href="javascript:void(0)">Get the Look</a>
-        <section class="header-nav-item-section">
+        <section class="header-nav-item-container" style="visibility: hidden; opacity: 0">
           <section class="row">
             <section class="col-md-3">
               <h3>Collections1</h3>
@@ -155,7 +173,7 @@
       </li>
       <li class="header-nav-item">
         <a href="javascript:void(0)">CLOTHING</a>
-        <section class="header-nav-item-section">
+        <section class="header-nav-item-container" style="visibility: hidden; opacity: 0">
           <section class="row">
             <section class="col-md-3">
               <h3>Collections1</h3>
@@ -197,38 +215,195 @@
       </li>
     </ul>
   </section>
+  <!-- 移动端才显示 -->
+  <section class="mobile-header-landing-container">
+    <a href="javascript:void(0)" class="show-header-nav-container">
+      <p><span class="fas fa-bars"></span></p>
+      <p>Menu</p>
+    </a>
+    <a href="javascript:void(0)">
+      <p><span class="fas fa-map-marker-alt"></span></p>
+      <p>Store</p>
+    </a>
+    <a href="javascript:void(0)">
+      <p><span class="fas fa-search"></span></p>
+      <p>Search</p>
+    </a>
+    <a href="javascript:void(0)">
+      <p><span class="fas fa-shopping-bag"></span></p>
+      <p>Bag</p>
+    </a>
+  </section>
+  <div class="modal fade" id="select-country-modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="select-country-modal-label">International Shipping</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">
+               <span class="fas fa-times"></span>
+            </span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <section class="select-country-tooltip">
+            <h4>Choose your shipping destination</h4>
+            <span>
+              chicos.com provides fast and affordable international shipping to our customers worldwide.
+              Shop with the ease and convenience of prices in local currency and all duties and taxes calculated at checkout.
+              <br>Read more about our <a href="/store/page.jsp?id=32#7">international shipping service</a>.
+            </span>
+          </section>
+          <section class="select-country-form">
+            <section>
+              <label>country</label>
+              <select class="select-country-select" name="select-country">
+                <option value="Canada">Canada</option>
+                <option value="Cayman Islands">Cayman Islands</option>
+                <option value="Canada">Canada</option>
+                <option value="Cayman Islands">Cayman Islands</option>
+                <option value="Canada">Canada</option>
+                <option value="Cayman Islands">Cayman Islands</option>
+              </select>
+            </section>
+            <section>
+              <label>currency</label>
+              <select class="select-country-select" name="select-currency">
+                <option value="AED - United Arab Emirates Dirham">AED - United Arab Emirates Dirham</option>
+                <option value="AUD - Australian Dollar">AUD - Australian Dollar</option>
+                <option value="AED - United Arab Emirates Dirham">AED - United Arab Emirates Dirham</option>
+                <option value="AUD - Australian Dollar">AUD - Australian Dollar</option>
+                <option value="AED - United Arab Emirates Dirham">AED - United Arab Emirates Dirham</option>
+                <option value="AUD - Australian Dollar">AUD - Australian Dollar</option>
+              </select>
+            </section>
+            <button class="btn btn-primary btn-lg save-country-button">SAVE & CONTINUE</button>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+<section class="banner-container">
+  <div class="banner-image">
+    <img src="https://www.chicos.com/web_assets/img/20181128/hp_hero.jpg" alt="">
+  </div>
+  <div class="banner-image-description">
+    <h2>
+      Take the<br> cozy route
+    </h2>
+    <h3>
+      Hit pause and escape the hustle-and-bustle.
+      <br>
+      It's time to cozy up to our latest collection.
+      <br>
+      You deserve every comfortable step.
+    </h3>
+    <a href="javascript:void(0)" class="btn btn-primary">Get Cozy</a>
+  </div>
+</section>
+
 
 <script>
 const elem = {
+  // header
+  headerNavContainer: $('.header-nav-container'),
   headerNavItemGroup: $('.header-nav-item-group'),
-  headerNavItem: $('.header-nav-item')
+  headerNavItemContainer: $('.header-nav-item .header-nav-item-container'),
+  headerNavItem: $('.header-nav-item'),
+  saveCountryButton: $('.save-country-button'),
+  // header mobile
+  showHeaderNavContainer: $('.show-header-nav-container'),
+  closeHeaderNavContainer: $('.close-header-nav-container')
+};
+
+const form = {
+  selectCountry: $('select[name="select-country"]'),
+  selectCurrency: $('select[name="select-currency"]')
 };
 
 const event = {
+  initPage() {
+    $('.select-country-select').select2();
+  },
   initEvent() {
+    // 页面大小更改刷新样式
+    $(window).on('resize', this.handlerResize);
+    // header
+    // header pc
     // 顶部导航鼠标[进入, 离开]事件
-    elem.headerNavItem.on('mouseover', this.handlerHeaderNavItemMouseOver);
-    elem.headerNavItem.on('mouseout', this.handlerHeaderNavItemMouseOut);
+    elem.headerNavItem.on('mouseenter', this.handlerHeaderNavItemMouseOver);
+    elem.headerNavItem.on('mouseleave', this.handlerHeaderNavItemMouseOut);
+    elem.headerNavItem.on('click', this.handlerMobileHeaderNavItemClick);
+    // header mobile
+    elem.showHeaderNavContainer.on('click', this.showHeaderNavContainer);
+    elem.closeHeaderNavContainer.on('click', this.closeHeaderNavContainer);
+    // 保存选择的国家
+    elem.saveCountryButton.on('click', this.saveCountry);
+  },
+  handlerResize() {
+    clearInterval(this.resizeTimeout);
+    // 防抖
+    this.resizeTimeout = setTimeout(function () {
+      if (window.innerWidth >= 991) {
+        // pc 端样式刷新
+        elem.headerNavContainer.removeClass('mobile-class');
+        elem.headerNavItem.each(function (index, item) {
+          const _this = $(item);
+          // 移除菜单样式
+          _this.removeClass('active');
+          // 收起菜单所有的子菜单
+          const headerNavItemContainer = _this.find('.header-nav-item-container');
+          headerNavItemContainer.slideUp(function () {
+            // 移除 slide Up 设置的样式
+            headerNavItemContainer.attr('style', '');
+          });
+        });
+      }
+    }, 100);
   },
   handlerHeaderNavItemMouseOver() {
-    var _this = $(this);
-    if (!_this.hasClass('active')) {
+    const _this = $(this);
+    // pc 端才触发
+    if (!elem.headerNavContainer.hasClass('mobile-class')) {
       elem.headerNavItemGroup.addClass('active');
-      _this.parent().addClass('active');
       _this.addClass('active');
     }
   },
   handlerHeaderNavItemMouseOut() {
-    var _this = $(this);
-    if (_this.hasClass('active')) {
+    // pc 端才触发
+    const _this = $(this);
+    if (!elem.headerNavContainer.hasClass('mobile-class')) {
       elem.headerNavItemGroup.removeClass('active');
-      _this.parent().removeClass('active');
       _this.removeClass('active');
     }
+  },
+  handlerMobileHeaderNavItemClick(e) {
+    const _this = $(this);
+    // mobile 端才触发
+    if (elem.headerNavContainer.hasClass('mobile-class')) {
+      // 防止容器内的元素点击触发
+      if ($(e.target.parentNode).hasClass('header-nav-item')) {
+        // 显示子菜单
+        _this.toggleClass('active');
+        _this.find('.header-nav-item-container').slideToggle();
+      }
+    }
+  },
+  saveCountry() {
+    // 保存选择的国家
+    console.log(form.selectCountry.val());
+    console.log(form.selectCurrency.val());
+  },
+  showHeaderNavContainer() {
+    elem.headerNavContainer.addClass('mobile-class');
+  },
+  closeHeaderNavContainer() {
+    elem.headerNavContainer.removeClass('mobile-class');
   }
 };
 
+event.initPage();
 event.initEvent();
 </script>
 </body>

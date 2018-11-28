@@ -1,13 +1,4 @@
-html {
-  font-size: 62.5%;
-}
-
-body {
-  font-size: 1.3rem;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background: #5a5858;
-}
-
+// header
 .header-container {
   position: relative;
   border-bottom: .1rem solid #ddd;
@@ -94,27 +85,29 @@ body {
           text-decoration: none;
           text-transform: uppercase;
           color: #000;
+          transition: .3s ease;
         }
         &.active {
           & > a {
             opacity: 1;
           }
-          & > .header-nav-item-section {
-            display: block;
+          & > .header-nav-item-container {
+            opacity: 1 !important;
+            visibility: visible !important;
           }
         }
-        .header-nav-item-section {
-          display: none;
+        .header-nav-item-container {
+          z-index: 5;
+          opacity: 0;
+          visibility: hidden;
           position: absolute;
-          top: 100%;
+          top: 101%;
           right: 0;
           left: 0;
           padding: 2rem 0;
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .3);
           background: rgba(255, 255, 255, .95);
-          transition: opacity .5s;
-          &.active {
-            opacity: 1;
-          }
+          transition: visibility linear 0.25s, opacity 0.25s linear;
           .row {
             max-width: 1200px;
             margin-left: auto;
@@ -151,7 +144,6 @@ body {
                 &:hover {
                   text-decoration: none;
                 }
-
                 img {
                   max-width: 100%;
                 }
@@ -177,5 +169,266 @@ body {
         }
       }
     }
+    .mobile-header-nav-landing-container{
+      display: none;
+    }
+  }
+  .mobile-header-landing-container {
+    display: none;
+  }
+  #select-country-modal {
+    .modal-dialog {
+      max-width: 600px !important;
+      .modal-content {
+        padding-bottom: 2rem;
+        border-radius: 0;
+        .modal-header {
+          background: #ececec;
+          .modal-title {
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+          }
+          .fas {
+            font-size: 25px;
+          }
+        }
+        .modal-body {
+          background: url(https://www.chicos.com/web_assets/ibf/images/overlay-bg.jpg) no-repeat left top #FFF;
+          .select-country-tooltip {
+            padding: 2rem 2rem;
+            color: #666;
+            h4 {
+              margin-bottom: 1rem;
+              font-size: 2rem;
+            }
+            span {
+              font-size: 1.5rem;
+            }
+          }
+          .select-country-form {
+            padding: 1rem 2rem 0;
+            section {
+              margin-bottom: 1rem;
+              color: #666;
+              label {
+                display: block;
+                font-size: 1.5rem;
+                color: #666;
+              }
+            }
+            .btn {
+              margin-top: 2rem;
+              height: 45px;
+              width: 50%
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .header-container {
+    .header-landing-container {
+      .header-landing-menu {
+        display: none;
+      }
+    }
+    .header-nav-container {
+      display: none;
+      &.mobile-class {
+        overflow: scroll;
+        z-index: 5;
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #fff;
+        .mobile-header-nav-landing-container {
+          display: block;
+          .close-container {
+            padding: 1.5rem 1.5rem;
+            background-color: #000;
+            display: flex;
+            justify-content: flex-end;
+            font-size: 3rem;
+            color: #fff;
+          }
+          .account-container {
+            padding: 1.5rem 1.5rem;
+            background-color: #000;
+            a {
+              margin-right: 1rem;
+              text-decoration: underline;
+              color: #fff;
+            }
+          }
+          .change-country {
+            padding: 1.5rem 1.5rem;
+            background: #fff;
+            border-bottom: .1rem solid #ddd;
+          }
+        }
+        .header-nav-item-group {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          & > li {
+            width: 100%;
+            &.active {
+              & > a {
+                &::after {
+                  -webkit-transform: rotate(0deg);
+                  -ms-transform: rotate(0deg);
+                  transform: rotate(0deg);
+                }
+              }
+            }
+            & > a {
+              padding: 2rem 1.5rem;
+              font-size: 1.5rem;
+              border-bottom: .1rem solid #ddd;
+              &::after {
+                content: url(https://www.chicos.com/web_assets/svg/close-large.svg);
+                float: right;
+                width: 1.3rem;
+                height: 1.3rem;
+                margin-top: .1rem;
+                opacity: .8;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+                -webkit-transform-origin: 50% 50%;
+                -ms-transform-origin: 50% 50%;
+                transform-origin: 50% 50%;
+                transition: all .5s ease;
+              }
+            }
+            .header-nav-item-container {
+              display: none;
+              position: static;
+              opacity: 1 !important;
+              padding: 0;
+              visibility: visible !important;
+              box-shadow: none;
+              .row {
+                section {
+                  flex: 0 0 100%;
+                  max-width: 100%;
+                  margin-bottom: 2rem;
+                  &.photo-container {
+                    display: none;
+                  }
+                  h3 {
+                    padding: 2rem 0 2rem 3rem;
+                    margin-bottom: 2rem;
+                  }
+                  ol {
+                    padding-left: 5rem;
+                    li {
+                      margin-bottom: 2rem;
+                      font-size: 1.6rem;
+                      color: #000;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .mobile-header-landing-container {
+      display: flex;
+      a {
+        flex: 1;
+        border-top: .1rem solid #ddd;
+        border-right: .1rem solid #ddd;
+        padding-top: .3rem;
+        padding-bottom: .3rem;
+        text-align: center;
+        color: #000;
+        p:first-child {
+          margin-bottom: .3rem;
+          font-size: 2.3rem;
+        }
+        p:last-child {
+          margin-bottom: .5rem;
+          text-transform: uppercase;
+        }
+      }
+      a:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// banner
+.banner-container {
+  position: relative;
+  max-width: 1200px;
+  margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  .banner-image {
+    img {
+      max-width: 100%;
+    }
+  }
+  .banner-image-description {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    padding: 0 55% 0 5%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+    h2 {
+      margin-bottom: 1rem;
+      text-align: center;
+      font-family: "Playfair Display", serif;
+      font-size: 3rem;
+      font-weight: 400;
+      letter-spacing: 0.1rem;
+      text-transform: uppercase;
+      color: #000;
+    }
+    h3 {
+      margin: 1rem 0;
+      font-size: 1.5rem;
+      line-height: 2rem;
+      letter-spacing: 1px;
+    }
+    a {
+      margin: 1rem;
+      margin-left: 0;
+      padding: 10px 40px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .banner-image-description h2 {
+    font-size: 4rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .banner-image-description h2 {
+    font-size: 5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .banner-image-description h2 {
+    font-size: 6rem;
   }
 }
